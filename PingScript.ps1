@@ -8,7 +8,7 @@ while ($start -le $end) {
     $IP = "$subnet.$start"
     $Pingable = Test-Connection -ComputerName $IP -count 1 -Quiet 
     try {
-        $DNSName = (Resolve-DnsName 192.168.1.92 -server 192.168.1.1 -DnsOnly -ErrorAction SilentlyContinue).Namehost
+        $DNSName = (Resolve-DnsName $IP -server 192.168.1.1 -DnsOnly -ErrorAction SilentlyContinue).Namehost
         }
     catch {
         $DNSName = "None"
